@@ -19,6 +19,8 @@ RUN apt-get install librabbitmq-dev -y \
     && make install \
     && echo '/usr/local/rabbitmq-c-0.7' | pecl install amqp \
     && echo 'extension=amqp.so' > /usr/local/etc/php/conf.d/amqp.ini
+
+RUN apt-get install git -y
  
 RUN rm -rf rabbitmq-c-0.7.1.tar.gz rabbitmq-c-0.7.1 phalcon.tar.gz cphalcon* \
     && apt-get autoremove -y \
