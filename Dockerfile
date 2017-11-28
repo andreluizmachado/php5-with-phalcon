@@ -22,6 +22,9 @@ RUN docker-php-ext-install mysql zip
 RUN pecl install redis \
     && docker-php-ext-enable redis
 
+RUN docker-php-ext-install pdo pdo_mysql \
+    && echo 'date.timezone = America/New_York' >> /usr/local/etc/php/php.ini
+
 RUN rm -rf rabbitmq-c-0.7.1.tar.gz rabbitmq-c-0.7.1 phalcon.tar.gz cphalcon* \
     && apt-get autoremove -y \
     && apt-get clean -y \
